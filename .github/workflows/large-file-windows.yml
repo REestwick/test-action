@@ -1,0 +1,35 @@
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build
+    runs-on: windows-latest
+    env:
+      INTEG_API_URL: 'https://api.integ.inno.cybeats.com'
+#      filePath: cybeats-sbom-studio-plugin-cyclonedx.json
+#      secretAccessKey: ${{ secrets.SECRETKEY }}
+#      accessKey: ${{ secrets.ACCESSKEY }}
+#      subType: application
+#      manufactureName: My Manufacturer
+#      supplierName: My Supplier
+#      threshold: Low
+#      sbomQuality: 50
+#      pkgType: maven
+#      sbomComponentName: Component Name
+#      namespace: com.example.demo
+#      sbomComponentVersion: 1.0.0
+      APP_BASE_VER: '3.5'
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+# maven application, API URL from env
+      - name: Cybeats SBOM Studio Action
+        uses: RobertHLiu/sbom-studio-action@main
+        if: always()
+        with:
+          url:  ${{ env.INTEG_API_URL }}
+          filePath:   manifest.spdx  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application     

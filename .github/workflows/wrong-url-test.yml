@@ -1,0 +1,32 @@
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      WRONG_INTEG_API_URL: 'https://sbom.integ.inno.cybeats.com'
+      WRONG_INTEG_API_URL1: 'https://api.integ.inno.cybeats.com/v1'
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3  
+     
+# Error:  maven application, API URL WRONG VALUE
+      - name: Cybeats SBOM Studio Action
+        uses: RobertHLiu/sbom-studio-action@main
+        if: always()
+        with:
+          url:   "${{ env.WRONG_INTEG_API_URL }}"  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application     
+      - name: Cybeats SBOM Studio Action
+        uses: RobertHLiu/sbom-studio-action@main
+        if: always()
+        with:
+          url:   "${{ env.WRONG_INTEG_API_URL1 }}"  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application                                                               

@@ -1,0 +1,58 @@
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      INTEG_API_URL: 'https://sbom.integ.inno.cybeats.com'
+      COMPANY: 'cybeats'
+      FILE_SUFFIX: 'cyclonedx-no-license-text.json'
+      DIR_NAME: 'examples/parallel'
+      PKG_TYPE: 'npm'
+      PKG_NAMESPACE: '@cybeats'
+      APP_BASE_VER: '3.5'
+      BUILD_NUMBER: '1730'
+      PKG_VERSION: '3.5.1730' 
+      MANUFACTURER: "Cybeats"
+      SUPPLIER: "Cybeats"      
+#      filePath: cybeats-sbom-studio-plugin-cyclonedx.json
+#      secretAccessKey: ${{ secrets.SECRETKEY }}
+#      accessKey: ${{ secrets.ACCESSKEY }}
+#      subType: application
+#      manufactureName: My Manufacturer
+#      supplierName: My Supplier
+#      threshold: Low
+#      sbomQuality: 50
+#      pkgType: maven
+#      sbomComponentName: Component Name
+#      namespace: com.example.demo
+#      sbomComponentVersion: 1.0.0
+    strategy:
+      matrix:
+        ARTIFACT_NAME: [ 'admin-governors', 'admin-sboms', 'admin-users' ]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Parallel Steps
+        id: parallel-steps
+        run: |
+          echo "::set-output name=steps::$(echo "admin-governors\nadmin-sboms\nadmin-users")" # Define the steps dynamically
+
+      - name: Cybeats SBOM Studio Action
+        uses: RobertHLiu/sbom-studio-action@main
+        if: always()
+        with:
+          url: "${{ vars.REPO_API_URL }}"
+          filePath: "${{ github.workspace }}/${{ env.DIR_NAME}}/${{ env.COMPANY }}-${{ matrix.ARTIFACT_NAME }}-${{ env.PKG_VERSION }}-${{ env.FILE_SUFFIX }}"
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application  
+          pkgType:   ${{ env.PKG_TYPE }}
+          sbomComponentName: ${{ matrix.ARTIFACT_NAME }}  
+          namespace:  ${{ env.PKG_NAMESPACE }} 
+          sbomComponentVersion:  ${{ env.APP_BASE_VER }}.${{ github.run_number }}
+        env:
+          STEPS: ${{ steps.parallel-steps.outputs.steps }}

@@ -1,0 +1,591 @@
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build
+    runs-on: windows-latest
+    env:
+      INTEG_API_URL: 'https://api.integ.inno.cybeats.com'
+#      filePath: cybeats-sbom-studio-plugin-cyclonedx.json
+#      secretAccessKey: ${{ secrets.SECRETKEY }}
+#      accessKey: ${{ secrets.ACCESSKEY }}
+#      subType: application
+#      manufactureName: My Manufacturer
+#      supplierName: My Supplier
+#      threshold: Low
+#      sbomQuality: 50
+#      pkgType: maven
+#      sbomComponentName: Component Name
+#      namespace: com.example.demo
+#      sbomComponentVersion: 1.0.0
+      APP_BASE_VER: '3.5'
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+# maven application, API URL from env
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:  ${{ env.INTEG_API_URL }}
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application     
+# pypi application, required args
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath: ./examples/application/cybeats-test-sbom-cli-3.5.13-cyclonedx.json
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType: application
+
+ # maven application, optional args -- Pass without threshold
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   "     ${{ secrets.APIURL }}    "
+          filePath:  " cybeats-sbom-studio-plugin-cyclonedx.json   "
+          secretAccessKey: "  ${{ secrets.SECRETKEY }}  " 
+          accessKey: "  ${{ secrets.ACCESSKEY }}  "
+          subType:  "  application  "
+          manufactureName:  "  Cybeats   "
+          supplierName:  " Cybeats       "
+          sbomQuality:   50  
+          pkgType:  " maven   "
+          sbomComponentName: "  Example Component Name        "
+          namespace:  "      com.example.demo  "
+          sbomComponentVersion:  "   ${{ env.APP_BASE_VER }}.${{ github.run_number }}   "
+ # maven application, optional args -- fail with Critical threshold (critical vulns present)
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application  
+          manufactureName:   Cybeats  
+          supplierName:   Cybeats
+          threshold:   High
+          sbomQuality:   50  
+          pkgType:   maven  
+          sbomComponentName:   Example Component Name      
+          namespace:   com.example.demo  
+          sbomComponentVersion:     ${{ env.APP_BASE_VER }}.${{ github.run_number }}         
+ 
+# maven application, optional args -- actual quality 100, expect 100
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application  
+          manufactureName:   Cybeats  
+          supplierName:   Cybeats
+          sbomQuality:   100
+          pkgType:   maven  
+          sbomComponentName:   Example Component Name      
+          namespace:   com.example.demo  
+          sbomComponentVersion:    1.0.0    
+  
+# golang application, optional args -- actual quality 90 ,expect 91
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   ./examples/application/docker-compose-2.1.34-cyclonedx-full-license-text.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:  application 
+          pkgType:   golang
+          sbomComponentName:   compose
+          namespace:  github.com/docker 
+          sbomComponentVersion:  1.0.0 
+          sbomQuality: 90
+# golang application, optional args -- actual quality 90, expect 90
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   ./examples/application/docker-compose-2.1.34-cyclonedx-full-license-text.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:  application 
+          pkgType:   golang
+          sbomComponentName:   compose
+          namespace:  github.com/docker 
+          sbomComponentVersion:  1.0.0
+          sbomQuality: 0
+
+# golang application, optional args -- quality meets expectation but vuln threshold doesn't -- has Critical vulns
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   ./examples/application/docker-compose-2.1.34-cyclonedx-full-license-text.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:  application 
+          pkgType:   golang
+          sbomComponentName:   compose
+          namespace:  github.com/docker 
+          sbomComponentVersion:  1.0.0-beta
+          threshold: Low
+          sbomQuality: 0                                                 
+
+# golang application, optional args -- quality and threshold both fail
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   ./examples/application/docker-compose-2.1.34-cyclonedx-full-license-text.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:  application 
+          pkgType:   golang
+          sbomComponentName:   compose
+          namespace:  github.com/docker 
+          sbomComponentVersion:  1.0.0-prerelease 
+          threshold: Critical
+          sbomQuality: 91
+
+
+# pypi application, required args
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath: ./examples/application/cybeats-test-sbom-cli-3.5.13-cyclonedx.json
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType: application
+          threshold: Critical
+          sbomQuality: 0
+
+# npm application, optional args
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  'examples/application/cybeats-admin-sboms-2.7.1475-cyclonedx-full-license-text.json' 
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType:   'application'  
+          pkgType:   'npm'  
+          sbomComponentName:   'admin-sboms' 
+          namespace:   '@cybeats' 
+          sbomComponentVersion:     '1.22.2'         
+          threshold: Medium
+          sbomQuality: 50
+
+# npm package, required args
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath: examples/package/cyclonedx-jquery-package-json
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType: package
+
+# pypi package, optinal args
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   ./examples/package/cyclonedx-py-package-json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   package  
+          pkgType:   pypi  
+          sbomComponentName:   urllib3   
+          sbomComponentVersion:   1.26.4     
+
+# golang library, required args plus mn and sn
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:    examples/library/cyclonedx-go-library.json  
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType:  library 
+          manufactureName:    Extreme! Lab, Indiana University   
+          supplierName:    Extreme! Lab, Indiana University   
+
+# maven library, optional args
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  examples/library/cyclonedx-maven-library-json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   library  
+          manufactureName:   Extreme! Lab, Indiana University  
+          supplierName:   Extreme! Lab, Indiana University  
+          threshold:   Critical  
+          sbomQuality:   50  
+          pkgType:   generic  
+          sbomComponentName: commons-lang3  
+          namespace:   org.apache.commons  
+          sbomComponentVersion: 3.8.1
+#
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:    examples/container/alpine-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   container  
+
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example1/spdx2.2/example1.spdx  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   package  
+          manufactureName:   Extreme! Lab, Indiana University  
+          supplierName:   Extreme! Lab, Indiana University  
+          threshold:   Critical  
+          sbomQuality:   50  
+          pkgType:   bitbucket  
+          sbomComponentName: example1  
+          namespace:   spdx-examples 
+          sbomComponentVersion: "   ${{ env.APP_BASE_VER }}.${{ github.run_number }}   "
+#
+# example6-bin
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example6/spdx2.2/example6-bin.spdx  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   package  
+          threshold:   Critical  
+          sbomQuality:   50  
+          pkgType:   golang  
+          sbomComponentName: example6-bin  
+          namespace:   spdx-examples 
+          sbomComponentVersion: ${{ env.APP_BASE_VER }}.${{ github.run_number }}
+#
+# example6-src -- 
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example6/spdx2.2/example6-src.spdx  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   library 
+          threshold:   Critical  
+          sbomQuality:   50  
+          pkgType:   generic   
+          sbomComponentName: example5-src   
+          sbomComponentVersion: ${{ env.APP_BASE_VER }}.${{ github.run_number }}               
+
+#
+# example6-lib --  shall be allowed error library cannot be golang
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example6/spdx2.2/example6-lib.spdx  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   library  
+          threshold:   Critical  
+          sbomQuality:   50  
+          pkgType:   golang   
+          sbomComponentName: example6-lib   
+          sbomComponentVersion: ${{ env.APP_BASE_VER }}.${{ github.run_number }}              
+# ./example7/spdx2.2/example7-golang.spdx.json
+# ./example7/spdx2.2/example7-go-module.spdx.json
+# ./example7/spdx2.2/example7-bin.spdx.json
+# ./example7/spdx2.2/example7-third-party-modules.spdx.json
+#
+# example7
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example7/spdx2.2/example7-golang.spdx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application
+          pkgType:   golang   
+          sbomComponentName: example7-application   
+          sbomComponentVersion:  7.0.1
+          namespace:  ${{ env.APP_BASE_VER }}.${{ github.run_number }} 
+
+# example7
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example7/spdx2.2/example7-golang.spdx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application
+          #
+# example7
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example7/spdx2.2/example7-go-module.spdx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   package  
+          threshold:   Critical  
+          sbomQuality:   50  
+          pkgType:   golang   
+          sbomComponentName: example7-module   
+          sbomComponentVersion:  7.0.1
+          namespace:  example7 
+          #
+# example7
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example7/spdx2.2/example7-bin.spdx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   package  
+          threshold:   Critical  
+          sbomQuality:   50  
+          pkgType:   golang   
+          sbomComponentName: example7-bin  
+          sbomComponentVersion: 6     
+          namespace: example 7
+          #
+# example7
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example7/spdx2.2/example7-third-party-modules.spdx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   package 
+          threshold:   Critical  
+          sbomQuality:   50  
+          pkgType:   golang   
+          sbomComponentName: example7-3rdpty-modules 
+          sbomComponentVersion:     7.1.0
+          namespace: example7                 
+# example8 ./example8/spdx2.3/examplemaven-0.0.1.spdx.json
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example8/spdx2.3/examplemaven-0.0.1.spdx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application 
+          threshold:   Critical  
+          sbomQuality:   50  
+          pkgType:   maven   
+          sbomComponentName: examplemaven 
+          sbomComponentVersion:     8.8.5
+          namespace: example8
+#./spdx-examples/example9/spdx2.2/appbomination.spdx.json
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example9/spdx2.2/appbomination.spdx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application 
+          threshold:   Critical  
+          sbomQuality:   50  
+          pkgType:   maven   
+          sbomComponentName: appbomination 
+          sbomComponentVersion:     8.8.5
+          namespace: example9
+#./spdx-examples/example9/spdx2.2/appbomination.spdx.json
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example9/spdx2.2/appbomination.spdx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application 
+          threshold:   High 
+          sbomQuality:   50  
+          pkgType:   maven   
+          sbomComponentName: appbomination 
+          sbomComponentVersion:     8.8.5
+          namespace: example9
+
+#./spdx-examples/example9/spdx2.2/appbomination.spdx.json
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example9/spdx2.2/appbomination.spdx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application 
+          threshold:   Medium
+          sbomQuality:   75  
+          pkgType:   maven   
+          sbomComponentName: appbomination 
+          sbomComponentVersion:     8.8.5
+          namespace: example9  
+          
+#./spdx-examples/example9/spdx2.2/appbomination.spdx.json
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example9/spdx2.2/appbomination.spdx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application 
+          threshold:   Low
+          sbomQuality:   50  
+          pkgType:   maven   
+          sbomComponentName: appbomination 
+          sbomComponentVersion:     8.8.5
+          namespace: example9
+#./spdx-examples/example9/spdx2.2/appbomination.spdx.json
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example9/spdx2.2/appbomination.spdx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application 
+          threshold:   Critical
+          sbomQuality:   100
+          pkgType:   maven   
+          sbomComponentName: appbomination 
+          sbomComponentVersion:     8.8.5
+          namespace: example9
+#./spdx-examples/example9/spdx2.2/appbomination.spdx.json
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example9/spdx2.2/appbomination.spdx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application 
+          threshold:   Low
+          sbomQuality:   75  
+          pkgType:   maven   
+          sbomComponentName: appbomination 
+          sbomComponentVersion:     8.8.5
+          namespace: example9                              
+         
+# ./spdx-examples/example10/spdx2.3/hello-source.spdx.json
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example10/spdx2.3/hello-source.spdx.json 
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   package 
+          threshold:   Critical  
+          sbomQuality:   50  
+          pkgType:   pypi   
+          sbomComponentName: hello 
+          sbomComponentVersion:     0.0.1
+          namespace: example10
+#./spdx-examples/example11/spdx2.3/sbom.spdx.json                    
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example11/spdx2.3/sbom.spdx.json
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   package 
+          threshold:   Critical  
+          sbomQuality:   50  
+          pkgType:   cargo   
+          sbomComponentName: hello-server 
+          sbomComponentVersion:    11.11.0
+          namespace: example11
+# ./spdx-examples/example12/spdx2.2/hello-dist.spdx.json
+# ./spdx-examples/example12/spdx2.2/hello-src.spdx.json
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example12/spdx2.2/hello-dist.spdx.json
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   package 
+          threshold:   Critical  
+          sbomQuality:   50  
+          pkgType:   gem   
+          sbomComponentName: hello-gem-dist
+          sbomComponentVersion:   12.12.1
+          namespace: example12
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@v1
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example12/spdx2.2/hello-src.spdx.json
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application 
+          threshold:   Critical  
+          sbomQuality:   50  
+          pkgType:   gem   
+          sbomComponentName: hello-gem-src 
+          sbomComponentVersion:    12.12.2
+          namespace: example12
+          
