@@ -1,0 +1,104 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.3",
+  "serialNumber": "urn:uuid:7c542720-2d25-45d1-a95c-dac444d162e7",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2021-11-03T16:14:16Z",
+    "tools": [
+      {
+        "vendor": "CycloneDX",
+        "name": "CycloneDX Maven plugin",
+        "version": "2.5.1",
+        "hashes": [
+          {
+            "alg": "MD5",
+            "content": "1a5528adfeb75e1fef6264a90a0de94b"
+          },
+          {
+            "alg": "SHA-1",
+            "content": "bcbf4d76880f8b7b9008bd08fb72454e7f666957"
+          },
+          {
+            "alg": "SHA-256",
+            "content": "42fc254f37585624de9ed2dd9e1701d44e34cb5856433075afc851f4ae37857e"
+          },
+          {
+            "alg": "SHA-384",
+            "content": "6dc2adf4e002def6c49f1593f3d490c8ef5de6df77b390f0177ee84637fa9263e6948c0bb8daaef6f352a2f5f06714b6"
+          },
+          {
+            "alg": "SHA-512",
+            "content": "d456791aeac58ab6ec7e28312d0f57c7307cfd63542358e63a145260b82d60ce5a17a950a5808563f0f72d95e431ac83eb14fd245ad9b68b81a63286503c8368"
+          }
+        ]
+      }
+    ],
+    "component": {
+      "publisher": "The Apache Software Foundation",
+      "group": "org.apache.commons",
+      "name": "commons-lang3",
+      "version": "3.8.1",     
+      "description": "Apache Commons Lang, a package of Java utility classes for the classes that are in java.langs hierarchy, or are considered to be so standard as to justify existence in java.lang.",
+      "scope": "optional",
+      "hashes": [
+        {
+          "alg": "MD5",
+          "content": "c592f49f703f9b3ab25556559b1ff379"
+        },
+        {
+          "alg": "SHA-1",
+          "content": "68e9a6adf7cf8eb7e9d31bbc554c7c75eeaac568"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "4ee380259c068d1dbe9e84ab52186f2acd65de067ec09beff731fca1697fdb16"
+        },
+        {
+          "alg": "SHA-384",
+          "content": "80e7831b2b08150b5d05d53b29f1904b298e9194fd02c61989755da04fa2f20e44f6a0f29d13bfde33ce1dbefc7afc52"
+        },
+        {
+          "alg": "SHA-512",
+          "content": "c1f6b5cb9ac47cfb612423a71b347568f3697cf88018b5808678be5234c50b22888db23cb833b7d8d458d39707ab9e4d839107d1d3306de2e4e422010c95180f"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:maven/org.apache.commons/commons-lang3@3.8.1?type=jar",
+      "externalReferences": [
+        {
+          "type": "issue-tracker",
+          "url": "https://issues.apache.org/jira/browse/LANG"
+        },
+        {
+          "type": "vcs",
+          "url": "https://gitbox.apache.org/repos/asf?p=commons-lang.git"
+        },
+        {
+          "type": "build-system",
+          "url": "https://builds.apache.org/"
+        },
+        {
+          "type": "mailing-list",
+          "url": "https://mail-archives.apache.org/mod_mbox/commons-user/"
+        },
+        {
+          "type": "website",
+          "url": "https://www.apache.org/"
+        },
+        {
+          "type": "distribution",
+          "url": "https://repository.apache.org/service/local/staging/deploy/maven2"
+        }
+      ],
+      "type": "library",
+      "bom-ref": "pkg:maven/org.apache.commons/commons-lang3@3.8.1?type=jar"
+    }
+  }
+}

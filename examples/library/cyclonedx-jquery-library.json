@@ -1,0 +1,30 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.3",
+  "serialNumber": "urn:uuid:0e734c97-1c61-4d16-b2ea-2a142ea59f05",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2021-11-09T16:55:23.203Z",
+    "tools": [
+      {
+        "vendor": "CycloneDX",
+        "name": "Node.js module",
+        "version": "3.1.1"
+      }
+    ],
+    "component": {
+      "type": "library",
+      "bom-ref": "pkg:npm/jquery@3.7.0",
+      "name": "jquery",
+      "version": "3.7.0",
+      "description": "jQuery: The Write Less, Do More, JavaScript Library",
+      "hashes": [
+        {
+          "alg": "SHA-1",
+          "content": "2ae2d661e906c1a01e044a71bb5b2743942183e5"
+        }
+      ],
+      "purl": "pkg:generic/jquery@3.7.0"
+    }
+  }
+}

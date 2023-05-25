@@ -1,0 +1,660 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.3",
+  "serialNumber": "urn:uuid:b2f7678f-1881-4b1a-aef7-45c99f6f7bb8",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2022-02-02T20:04:36Z",
+    "tools": [
+      {
+        "vendor": "CycloneDX",
+        "name": "CycloneDX Maven plugin",
+        "version": "2.5.1",
+        "hashes": [
+          {
+            "alg": "MD5",
+            "content": "1a5528adfeb75e1fef6264a90a0de94b"
+          },
+          {
+            "alg": "SHA-1",
+            "content": "bcbf4d76880f8b7b9008bd08fb72454e7f666957"
+          },
+          {
+            "alg": "SHA-256",
+            "content": "42fc254f37585624de9ed2dd9e1701d44e34cb5856433075afc851f4ae37857e"
+          },
+          {
+            "alg": "SHA-384",
+            "content": "6dc2adf4e002def6c49f1593f3d490c8ef5de6df77b390f0177ee84637fa9263e6948c0bb8daaef6f352a2f5f06714b6"
+          },
+          {
+            "alg": "SHA-512",
+            "content": "d456791aeac58ab6ec7e28312d0f57c7307cfd63542358e63a145260b82d60ce5a17a950a5808563f0f72d95e431ac83eb14fd245ad9b68b81a63286503c8368"
+          }
+        ]
+      }
+    ],
+    "component": {
+      "group": "com.cybeats",
+      "name": "sbom-cli-Linux",
+      "version": "2.1.14",
+      "licenses": [],
+      "purl": "pkg:maven/com.cybeats/sbom-cli-Linux@2.1.14?type=jar",
+      "type": "application",
+      "bom-ref": "pkg:maven/com.cybeats/sbom-cli-Linux@2.1.14?type=jar",
+      "hashes": [
+        {
+          "alg": "SHA-1",
+          "content": "ea9f6a8620fd13272c1bc6c26d2d34d4b22d1315"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "publisher": "The Apache Software Foundation",
+      "group": "org.apache.commons",
+      "name": "commons-lang3",
+      "version": "3.11",
+      "description": "Apache Commons Lang, a package of Java utility classes for the classes that are in java.lang's hierarchy, or are considered to be so standard as to justify existence in java.lang.",
+      "scope": "optional",
+      "hashes": [
+        {
+          "alg": "MD5",
+          "content": "c592f49f703f9b3ab25556559b1ff379"
+        },
+        {
+          "alg": "SHA-1",
+          "content": "68e9a6adf7cf8eb7e9d31bbc554c7c75eeaac568"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "4ee380259c068d1dbe9e84ab52186f2acd65de067ec09beff731fca1697fdb16"
+        },
+        {
+          "alg": "SHA-384",
+          "content": "80e7831b2b08150b5d05d53b29f1904b298e9194fd02c61989755da04fa2f20e44f6a0f29d13bfde33ce1dbefc7afc52"
+        },
+        {
+          "alg": "SHA-512",
+          "content": "c1f6b5cb9ac47cfb612423a71b347568f3697cf88018b5808678be5234c50b22888db23cb833b7d8d458d39707ab9e4d839107d1d3306de2e4e422010c95180f"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:maven/org.apache.commons/commons-lang3@3.11?type=jar",
+      "externalReferences": [
+        {
+          "type": "issue-tracker",
+          "url": "https://issues.apache.org/jira/browse/LANG"
+        },
+        {
+          "type": "vcs",
+          "url": "https://gitbox.apache.org/repos/asf?p=commons-lang.git"
+        },
+        {
+          "type": "build-system",
+          "url": "https://builds.apache.org/"
+        },
+        {
+          "type": "mailing-list",
+          "url": "https://mail-archives.apache.org/mod_mbox/commons-user/"
+        },
+        {
+          "type": "website",
+          "url": "https://www.apache.org/"
+        },
+        {
+          "type": "distribution",
+          "url": "https://repository.apache.org/service/local/staging/deploy/maven2"
+        }
+      ],
+      "type": "library",
+      "bom-ref": "pkg:maven/org.apache.commons/commons-lang3@3.11?type=jar"
+    },
+    {
+      "group": "org.json",
+      "name": "json",
+      "version": "20190722",
+      "description": "JSON is a light-weight, language independent, data interchange format. See http://www.JSON.org/ The files in this package implement JSON encoders/decoders in Java. It also includes the capability to convert between JSON and XML, HTTP headers, Cookies, and CDL. This is a reference implementation. There is a large number of JSON packages in Java. Perhaps someday the Java community will standardize on one. Until then, choose carefully. The license includes this restriction: \"The software shall be used for good, not evil.\" If your conscience cannot live with that, then choose a different package.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "MD5",
+          "content": "cdb0aa1fd126bc94b34da5856b57f13a"
+        },
+        {
+          "alg": "SHA-1",
+          "content": "07bce7bacf0ab5e9f894d307a3de8b7f540064d5"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "e35b3830de02a8992ca8beb6936f52ee80e509753d64469c8f0dde93e17a880b"
+        },
+        {
+          "alg": "SHA-384",
+          "content": "768234394c9f6f4fc33162d383739e5feaf78479bd4b05ff0b41aad05ab2f89e195ac0b51d7163f664d785f51e1e7db9"
+        },
+        {
+          "alg": "SHA-512",
+          "content": "2c815bcd5b3efe683bf3e9f47d559be0934d35ac63299522f3143ca072ae414177c4dc909ff1db4957b93e79eddfa971d5f65fb34c9608eb65083a7e3f57b10c"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "JSON"
+          }
+        }
+      ],
+      "purl": "pkg:maven/org.json/json@20190722?type=jar",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/douglascrockford/JSON-java.git"
+        },
+        {
+          "type": "distribution",
+          "url": "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+        }
+      ],
+      "type": "library",
+      "bom-ref": "pkg:maven/org.json/json@20190722?type=jar"
+    },
+    {
+      "publisher": "The Apache Software Foundation",
+      "group": "org.apache.httpcomponents",
+      "name": "httpclient",
+      "version": "4.5.13",
+      "description": "Apache HttpComponents Client",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "MD5",
+          "content": "40d6b9075fbd28fa10292a45a0db9457"
+        },
+        {
+          "alg": "SHA-1",
+          "content": "e5f6cae5ca7ecaac1ec2827a9e2d65ae2869cada"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "6fe9026a566c6a5001608cf3fc32196641f6c1e5e1986d1037ccdbd5f31ef743"
+        },
+        {
+          "alg": "SHA-384",
+          "content": "093ac3e2dde58e34aa70309c7305eb3c9b5be2509a9293f1672494da55479a86bd112e83326746dc7a32855472952b99"
+        },
+        {
+          "alg": "SHA-512",
+          "content": "3567739186e551f84cad3e4b6b270c5b8b19aba297675a96bcdff3663ff7d20d188611d21f675fe5ff1bfd7d8ca31362070910d7b92ab1b699872a120aa6f089"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:maven/org.apache.httpcomponents/httpclient@4.5.13?type=jar",
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "http://www.apache.org/"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "http://issues.apache.org/jira/browse/HTTPCLIENT"
+        },
+        {
+          "type": "mailing-list",
+          "url": "http://mail-archives.apache.org/mod_mbox/hc-httpclient-users/"
+        },
+        {
+          "type": "distribution",
+          "url": "https://repository.apache.org/service/local/staging/deploy/maven2"
+        }
+      ],
+      "type": "library",
+      "bom-ref": "pkg:maven/org.apache.httpcomponents/httpclient@4.5.13?type=jar"
+    },
+    {
+      "publisher": "The Apache Software Foundation",
+      "group": "org.apache.httpcomponents",
+      "name": "httpcore",
+      "version": "4.4.13",
+      "description": "Apache HttpComponents Core (blocking I/O)",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "MD5",
+          "content": "e07a248f61c52776a2366c075dcd4963"
+        },
+        {
+          "alg": "SHA-1",
+          "content": "853b96d3afbb7bf8cc303fe27ee96836a10c1834"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "e06e89d40943245fcfa39ec537cdbfce3762aecde8f9c597780d2b00c2b43424"
+        },
+        {
+          "alg": "SHA-384",
+          "content": "b776d57492478c162d428bdd3139be0fa6c3cf4503355c3a04710ca7bc3ee74d66627f49eb42814fd8f8364dbd17aa91"
+        },
+        {
+          "alg": "SHA-512",
+          "content": "23430cde8b9bed33c91474ba49f1143284135df1b25fdcbc37bc3bb7e9549e77b3918eb40250093db652ae200367e87316129b23b4f6987e94939d60f467498d"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:maven/org.apache.httpcomponents/httpcore@4.4.13?type=jar",
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "http://www.apache.org/"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "http://issues.apache.org/jira/browse/HTTPCORE"
+        },
+        {
+          "type": "mailing-list",
+          "url": "http://mail-archives.apache.org/mod_mbox/hc-httpclient-users/"
+        },
+        {
+          "type": "distribution",
+          "url": "https://repository.apache.org/service/local/staging/deploy/maven2"
+        }
+      ],
+      "type": "library",
+      "bom-ref": "pkg:maven/org.apache.httpcomponents/httpcore@4.4.13?type=jar"
+    },
+    {
+      "publisher": "The Apache Software Foundation",
+      "group": "commons-logging",
+      "name": "commons-logging",
+      "version": "1.2",
+      "description": "Apache Commons Logging is a thin adapter allowing configurable bridging to other, well known logging systems.",
+      "hashes": [
+        {
+          "alg": "MD5",
+          "content": "040b4b4d8eac886f6b4a2a3bd2f31b00"
+        },
+        {
+          "alg": "SHA-1",
+          "content": "4bfc12adfe4842bf07b657f0369c4cb522955686"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "daddea1ea0be0f56978ab3006b8ac92834afeefbd9b7e4e6316fca57df0fa636"
+        },
+        {
+          "alg": "SHA-384",
+          "content": "ac20720d7156131478205f1b454395abf84cfc8da2f163301af32f63bd3c4764bd26cb54ed53800f33193ae591f3ce9c"
+        },
+        {
+          "alg": "SHA-512",
+          "content": "ed00dbfabd9ae00efa26dd400983601d076fe36408b7d6520084b447e5d1fa527ce65bd6afdcb58506c3a808323d28e88f26cb99c6f5db9ff64f6525ecdfa557"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:maven/commons-logging/commons-logging@1.2?type=jar",
+      "externalReferences": [
+        {
+          "type": "issue-tracker",
+          "url": "http://issues.apache.org/jira/browse/LOGGING"
+        },
+        {
+          "type": "vcs",
+          "url": "http://svn.apache.org/repos/asf/commons/proper/logging/trunk"
+        },
+        {
+          "type": "build-system",
+          "url": "https://continuum-ci.apache.org/"
+        },
+        {
+          "type": "mailing-list",
+          "url": "http://mail-archives.apache.org/mod_mbox/commons-user/"
+        },
+        {
+          "type": "website",
+          "url": "http://www.apache.org/"
+        },
+        {
+          "type": "distribution",
+          "url": "https://repository.apache.org/service/local/staging/deploy/maven2"
+        }
+      ],
+      "type": "library",
+      "bom-ref": "pkg:maven/commons-logging/commons-logging@1.2?type=jar"
+    },
+    {
+      "publisher": "The Apache Software Foundation",
+      "group": "commons-codec",
+      "name": "commons-codec",
+      "version": "1.11",
+      "description": "The Apache Commons Codec package contains simple encoder and decoders for various formats such as Base64 and Hexadecimal. In addition to these widely used encoders and decoders, the codec package also maintains a collection of phonetic encoding utilities.",
+      "hashes": [
+        {
+          "alg": "MD5",
+          "content": "567159b1ae257a43e1391a8f59d24cfe"
+        },
+        {
+          "alg": "SHA-1",
+          "content": "3acb4705652e16236558f0f4f2192cc33c3bd189"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "e599d5318e97aa48f42136a2927e6dfa4e8881dff0e6c8e3109ddbbff51d7b7d"
+        },
+        {
+          "alg": "SHA-384",
+          "content": "9ae3d8fd4c38f3af52c76c5f98039109901cb0f70700e6d9999b27cc4b30b188e2688aa4adcf6b846376bc3ca125907a"
+        },
+        {
+          "alg": "SHA-512",
+          "content": "d9586162b257386b5871e7e9ae255a38014a9efaeef5148de5e40a3b0200364dad8516bddd554352aa2e5337bec2cc11df88c76c4fdde96a40f3421aa60650d7"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:maven/commons-codec/commons-codec@1.11?type=jar",
+      "externalReferences": [
+        {
+          "type": "issue-tracker",
+          "url": "http://issues.apache.org/jira/browse/CODEC"
+        },
+        {
+          "type": "vcs",
+          "url": "http://svn.apache.org/viewvc/commons/proper/codec/trunk"
+        },
+        {
+          "type": "build-system",
+          "url": "https://builds.apache.org/"
+        },
+        {
+          "type": "mailing-list",
+          "url": "http://mail-archives.apache.org/mod_mbox/commons-user/"
+        },
+        {
+          "type": "website",
+          "url": "https://www.apache.org/"
+        },
+        {
+          "type": "distribution",
+          "url": "https://repository.apache.org/service/local/staging/deploy/maven2"
+        }
+      ],
+      "type": "library",
+      "bom-ref": "pkg:maven/commons-codec/commons-codec@1.11?type=jar"
+    },
+    {
+      "publisher": "The Apache Software Foundation",
+      "group": "commons-io",
+      "name": "commons-io",
+      "version": "2.8.0",
+      "description": "The Apache Commons IO library contains utility classes, stream implementations, file filters, file comparators, endian transformation classes, and much more.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "MD5",
+          "content": "21ba575792e2694c39af13918a80550b"
+        },
+        {
+          "alg": "SHA-1",
+          "content": "92999e26e6534606b5678014e66948286298a35c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "02f291e5d1243dc143496e3cbbb40a1ced47aa58f2d633d3e38780cd068d5074"
+        },
+        {
+          "alg": "SHA-384",
+          "content": "13cb963b3b8bd821f3d3c0e7bea787f9b0e78b35073a4132e6d865c289e3293978096a4fe51a5deb04e297ba4db644a5"
+        },
+        {
+          "alg": "SHA-512",
+          "content": "72040ed293a083f979c3f23b00c359195cf0e4c227a9cb962d99804cbe07d86e24d2864aa8c533bb79e4ad1f83d3d17f290c8c24630410eb80734d6d1266e7ec"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:maven/commons-io/commons-io@2.8.0?type=jar",
+      "externalReferences": [
+        {
+          "type": "issue-tracker",
+          "url": "https://issues.apache.org/jira/browse/IO"
+        },
+        {
+          "type": "vcs",
+          "url": "https://gitbox.apache.org/repos/asf?p=commons-io.git"
+        },
+        {
+          "type": "build-system",
+          "url": "https://builds.apache.org/"
+        },
+        {
+          "type": "mailing-list",
+          "url": "https://mail-archives.apache.org/mod_mbox/commons-user/"
+        },
+        {
+          "type": "website",
+          "url": "https://www.apache.org/"
+        },
+        {
+          "type": "distribution",
+          "url": "https://repository.apache.org/service/local/staging/deploy/maven2"
+        }
+      ],
+      "type": "library",
+      "bom-ref": "pkg:maven/commons-io/commons-io@2.8.0?type=jar"
+    },
+    {
+      "publisher": "Apache Software Foundation",
+      "group": "commons-httpclient",
+      "name": "commons-httpclient",
+      "version": "3.1",
+      "description": "The HttpClient component supports the client-side of RFC 1945 (HTTP/1.0) and RFC 2616 (HTTP/1.1) , several related specifications (RFC 2109 (Cookies) , RFC 2617 (HTTP Authentication) , etc.), and provides a framework by which new request types (methods) or HTTP extensions can be created easily.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "MD5",
+          "content": "8ad8c9229ef2d59ab9f59f7050e846a5"
+        },
+        {
+          "alg": "SHA-1",
+          "content": "964cd74171f427720480efdec40a7c7f6e58426a"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "dbd4953d013e10e7c1cc3701a3e6ccd8c950c892f08d804fabfac21705930443"
+        },
+        {
+          "alg": "SHA-384",
+          "content": "973e966839aaaddea4af4dd43c6dea59eeeca88b8e452af0a35efeb3c920592b110c5a366fc46f75c404d1c7fa4a7443"
+        },
+        {
+          "alg": "SHA-512",
+          "content": "85e79d4fdb266861910ef95bcd6e82a7f091c9bfbc63dbe2112383ea4d53a5b7a378b54e7c472fbdfde923f30c72d9cad626f8fabb0b9c70d1dfb095add73359"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:maven/commons-httpclient/commons-httpclient@3.1?type=jar",
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "http://jakarta.apache.org/"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "http://issues.apache.org/jira/browse/HTTPCLIENT"
+        },
+        {
+          "type": "mailing-list",
+          "url": "http://mail-archives.apache.org/mod_mbox/jakarta-httpcomponents-dev/"
+        },
+        {
+          "type": "vcs",
+          "url": "http://svn.apache.org/repos/asf/jakarta/httpcomponents/oac.hc3x/trunk"
+        }
+      ],
+      "type": "library",
+      "bom-ref": "pkg:maven/commons-httpclient/commons-httpclient@3.1?type=jar"
+    },
+    {
+      "publisher": "The Apache Software Foundation",
+      "group": "commons-cli",
+      "name": "commons-cli",
+      "version": "1.5.0",
+      "description": "Apache Commons CLI provides a simple API for presenting, processing and validating a Command Line Interface.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "MD5",
+          "content": "6c3b2052160144196118b1f019504388"
+        },
+        {
+          "alg": "SHA-1",
+          "content": "dc98be5d5390230684a092589d70ea76a147925c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "bc8bb01fc0fad250385706e20f927ddcff6173f6339b387dc879237752567ac6"
+        },
+        {
+          "alg": "SHA-384",
+          "content": "a7a2daa807c4007c506b5100f0a9b526c0052c4e1f6b699904ef9d2aba8195b6003dc4d47ca133b15e2f3e830bdbe6c4"
+        },
+        {
+          "alg": "SHA-512",
+          "content": "b78ac2b418e9e9e7d0bc866664577199d320408a6f03151b3789bac365c986dd526df853599e633d7e50fe136cbf3eb9ce50c9cfa0ad38c3cc8d8ee416f61c40"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:maven/commons-cli/commons-cli@1.5.0?type=jar",
+      "externalReferences": [
+        {
+          "type": "issue-tracker",
+          "url": "https://issues.apache.org/jira/browse/CLI"
+        },
+        {
+          "type": "vcs",
+          "url": "https://gitbox.apache.org/repos/asf?p=commons-cli.git"
+        },
+        {
+          "type": "build-system",
+          "url": "https://builds.apache.org/"
+        },
+        {
+          "type": "mailing-list",
+          "url": "https://mail-archives.apache.org/mod_mbox/commons-user/"
+        },
+        {
+          "type": "website",
+          "url": "https://www.apache.org/"
+        },
+        {
+          "type": "distribution",
+          "url": "https://repository.apache.org/service/local/staging/deploy/maven2"
+        }
+      ],
+      "type": "library",
+      "bom-ref": "pkg:maven/commons-cli/commons-cli@1.5.0?type=jar"
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:maven/com.cybeats/sbom-cli-Linux@2.1.14?type=jar",
+      "dependsOn": [
+        "pkg:maven/org.apache.commons/commons-lang3@3.11?type=jar",
+        "pkg:maven/org.json/json@20190722?type=jar",
+        "pkg:maven/org.apache.httpcomponents/httpclient@4.5.13?type=jar",
+        "pkg:maven/commons-io/commons-io@2.8.0?type=jar",
+        "pkg:maven/commons-httpclient/commons-httpclient@3.1?type=jar",
+        "pkg:maven/commons-cli/commons-cli@1.5.0?type=jar"
+      ]
+    },
+    {
+      "ref": "pkg:maven/org.apache.commons/commons-lang3@3.11?type=jar",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:maven/org.json/json@20190722?type=jar",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:maven/org.apache.httpcomponents/httpclient@4.5.13?type=jar",
+      "dependsOn": [
+        "pkg:maven/org.apache.httpcomponents/httpcore@4.4.13?type=jar",
+        "pkg:maven/commons-logging/commons-logging@1.2?type=jar",
+        "pkg:maven/commons-codec/commons-codec@1.11?type=jar"
+      ]
+    },
+    {
+      "ref": "pkg:maven/org.apache.httpcomponents/httpcore@4.4.13?type=jar",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:maven/commons-logging/commons-logging@1.2?type=jar",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:maven/commons-codec/commons-codec@1.11?type=jar",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:maven/commons-io/commons-io@2.8.0?type=jar",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:maven/commons-httpclient/commons-httpclient@3.1?type=jar",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:maven/commons-cli/commons-cli@1.5.0?type=jar",
+      "dependsOn": []
+    }
+  ]
+}

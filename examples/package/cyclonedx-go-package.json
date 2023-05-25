@@ -1,0 +1,68 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.3",
+  "serialNumber": "urn:uuid:3a53eee1-afd2-4963-85ae-3b02ad8bd167",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2021-11-08T13:18:32-05:00",
+    "tools": [
+      {
+        "vendor": "CycloneDX",
+        "name": "cyclonedx-gomod",
+        "version": "v0.0.0-unset",
+        "hashes": [
+          {
+            "alg": "MD5",
+            "content": "a3cbbe60e9e1914ce3d2ca5cde2f4cfb"
+          },
+          {
+            "alg": "SHA-1",
+            "content": "d45c184dd60a003d3e3d564660b2ad246c14f383"
+          },
+          {
+            "alg": "SHA-256",
+            "content": "65104488371016b9c8c3c9e44f85157d7cf20e554ceb7fd4b00e732215d682c5"
+          },
+          {
+            "alg": "SHA-384",
+            "content": "f4df15d96ab397f69d3e4edc28d2d5a9b5649a7b673cddab479fedf44d2edc6cad4174546ef797248ade4ae2bb661585"
+          },
+          {
+            "alg": "SHA-512",
+            "content": "dfd9692dbdd7cd65323bfe3a56f8621ff42ddbfd4114a9747ffbb351732dfa56feedaff181c5a3d389b7c4af757e036a2e6a9b4aa974dea4b6f6e6feb559ba90"
+          }
+        ]
+      }
+    ],
+    "component": {
+      "bom-ref": "pkg:golang/github.com/Azure/go-ansiterm@v0.0.0-20210617225240-d185dfc1b5a1",
+      "type": "library",
+      "name": "github.com/Azure/go-ansiterm",
+      "version": "v0.0.0-20210617225240-d185dfc1b5a1",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5101cc80b3be4f1384971e41e4767884942ca09fcfbd4bca4612470d05cef0ff"
+        }
+      ],
+      "purl": "pkg:golang/github.com/Azure/go-ansiterm@v0.0.0-20210617225240-d185dfc1b5a1",
+      "externalReferences": [
+        {
+          "url": "https://github.com/Azure/go-ansiterm",
+          "type": "vcs"
+        }
+      ],
+      "evidence": {
+        "licenses": [
+          {
+            "license": {
+              "id": "MIT"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+
