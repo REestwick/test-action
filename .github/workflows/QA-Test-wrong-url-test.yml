@@ -13,7 +13,7 @@ jobs:
      
 # Error:  maven application, API URL WRONG VALUE
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   "${{ env.WRONG_INTEG_API_URL }}"  
@@ -22,7 +22,7 @@ jobs:
           accessKey:   ${{ secrets.ACCESSKEY }}  
           subType:   application     
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   "${{ env.WRONG_INTEG_API_URL1 }}"  

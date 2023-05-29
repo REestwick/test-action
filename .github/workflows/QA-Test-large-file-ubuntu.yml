@@ -25,7 +25,7 @@ jobs:
 
 # maven application, API URL from env
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:  ${{ env.INTEG_API_URL }}

@@ -41,7 +41,7 @@ jobs:
           echo "::set-output name=steps::$(echo "admin-governors\nadmin-sboms\nadmin-users")" # Define the steps dynamically
 
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url: "${{ vars.REPO_API_URL }}"

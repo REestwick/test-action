@@ -44,7 +44,7 @@ jobs:
 
 
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         with:
           url: https://api.integ.inno.cybeats.com
           filePath: cybeats-sbom-studio-plugin-cyclonedx.json

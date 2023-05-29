@@ -25,7 +25,7 @@ jobs:
 
  # maven application, optional args -- Pass without threshold
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   "     ${{ secrets.APIURL }}    "
@@ -42,7 +42,7 @@ jobs:
           sbomComponentVersion:  "   ${{ env.APP_BASE_VER }}.${{ github.run_number }}   "
  # maven application, optional args -- fail with Critical threshold (critical vulns present)
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -61,7 +61,7 @@ jobs:
  
 # maven application, optional args -- actual quality 100, expect 100
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -79,7 +79,7 @@ jobs:
   
 # golang application, optional args -- actual quality 90 ,expect 91
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -94,7 +94,7 @@ jobs:
           sbomQuality: 90
 # golang application, optional args -- actual quality 90, expect 90
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -110,7 +110,7 @@ jobs:
 
 # golang application, optional args -- quality meets expectation but vuln threshold doesn't -- has Critical vulns
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -127,7 +127,7 @@ jobs:
 
 # golang application, optional args -- quality and threshold both fail
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -145,7 +145,7 @@ jobs:
 
 #./spdx-examples/example9/spdx2.2/appbomination.spdx.json
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -161,7 +161,7 @@ jobs:
           namespace: example9
 #./spdx-examples/example9/spdx2.2/appbomination.spdx.json
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -178,7 +178,7 @@ jobs:
 
 #./spdx-examples/example9/spdx2.2/appbomination.spdx.json
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -195,7 +195,7 @@ jobs:
           
 #./spdx-examples/example9/spdx2.2/appbomination.spdx.json
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -211,7 +211,7 @@ jobs:
           namespace: example9
 #./spdx-examples/example9/spdx2.2/appbomination.spdx.json
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -227,7 +227,7 @@ jobs:
           namespace: example9
 #./spdx-examples/example9/spdx2.2/appbomination.spdx.json
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  

@@ -10,7 +10,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3  
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -28,7 +28,7 @@ jobs:
           sbomComponentVersion:    1.0.0  
 #./spdx-examples/example9/spdx2.2/appbomination.spdx.json
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -45,7 +45,7 @@ jobs:
 
 #./spdx-examples/example9/spdx2.2/appbomination.spdx.json
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -62,7 +62,7 @@ jobs:
 
 #./spdx-examples/example9/spdx2.2/appbomination.spdx.json
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -78,7 +78,7 @@ jobs:
           namespace: example9         
           # maven application, optional args -- sbom quality 100, but expects 101
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -95,7 +95,7 @@ jobs:
           sbomComponentVersion:    1.0.0   
                      # maven application, optional args -- sbom quality 100, but expects -1
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -112,7 +112,7 @@ jobs:
           sbomComponentVersion:    1.0.0   
            # maven application, optional args -- ?? Threshold is High01 -- see what happen (critical issue present)
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -131,7 +131,7 @@ jobs:
 
 # maven application, optional args, non-existent subType
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url: ${{ secrets.APIURL }}
@@ -141,7 +141,7 @@ jobs:
           subType:   applications_wrong_subtype_not_supported_by_backend_123 
 # maven application, optional args, access key of wrong data type
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -151,7 +151,7 @@ jobs:
           subType:   application  
 # maven application, optional args, secret key of wrong data type
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -161,7 +161,7 @@ jobs:
           subType:   application  
 # maven application, optional args, url of wrong data type
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url: 'http://api.example.com'
@@ -172,7 +172,7 @@ jobs:
   
 # maven application, optional args, filePath of wong data type
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url: ${{ secrets.APIURL }}
@@ -183,7 +183,7 @@ jobs:
 
 # maven application, optional args, subType of wrong data type
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url: ${{ secrets.APIURL }}
@@ -194,7 +194,7 @@ jobs:
 
 # maven application, optional args, subType of bad data type
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url: ${{ secrets.APIURL }}
@@ -204,7 +204,7 @@ jobs:
           subType:   NaN        
 # maven application, optional args, all input are bad data
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url: true
@@ -214,7 +214,7 @@ jobs:
           subType:   undefined                           
 # Error:  maven application, API URL from env not exist
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   "$INTEG_API_URL_WHICH_IS_NOT_DEFINED_DELIBERATELY"  
@@ -224,7 +224,7 @@ jobs:
           subType:   application   
 # Error:  maven application, API URL WRONG VALUE
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   "${{ env.WRONG_INTEG_API_URL }}"  
@@ -234,7 +234,7 @@ jobs:
           subType:   application                             
 # Error:  maven application, wrong secret key
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -244,7 +244,7 @@ jobs:
           subType:   application       
 # Error: maven application, optional args -- wrong access key
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -254,7 +254,7 @@ jobs:
           subType:   application        
 # Error: maven application, wrong subtype as library
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -265,7 +265,7 @@ jobs:
         
 # Error: maven application, wrong subtype as package
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -276,7 +276,7 @@ jobs:
 
 # Error: maven application, wrong filePath (should have .json extension but didn't supply)
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -286,7 +286,7 @@ jobs:
           subType:   package       
 # Error: npm application, optional args -- Error missing sbomComponentVersion
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -299,7 +299,7 @@ jobs:
           namespace:   '@cybeats' 
 # Error: npm application, optional args -- Error -- empty URL
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   '   '
@@ -313,7 +313,7 @@ jobs:
           sbomComponentVersion: 1.0.0
 # Error: npm application, optional args -- Error -- empty FilePath
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -327,7 +327,7 @@ jobs:
           sbomComponentVersion: 1.0.0
 # Error: npm application, optional args -- Error -- empty secretKey
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -341,7 +341,7 @@ jobs:
           sbomComponentVersion: 1.0.0
 # Error: npm application, optional args -- Error -- empty accessKey
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -355,7 +355,7 @@ jobs:
           sbomComponentVersion: 1.0.0
 # Error: npm application, optional args -- Error -- empty subType
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -369,7 +369,7 @@ jobs:
           sbomComponentVersion: 1.0.0
 # Error: npm application, optional args -- Error -- empty pkgType
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -384,7 +384,7 @@ jobs:
           
 # Error: npm application, optional args -- Error -- empty sbomComponentName
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -399,7 +399,7 @@ jobs:
           
 # Error: npm application, optional args -- Error -- empty sbomComponentVersion
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -415,7 +415,7 @@ jobs:
 
 # Error: npm application, optional args -- Error -- empty subType
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -431,7 +431,7 @@ jobs:
 
 # Error: npm application, optional args -- Error -- missing sbomComponentVersion
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -444,7 +444,7 @@ jobs:
           namespace:   '@cybeats' 
 # Error: npm application, optional args -- Error -- missing sbomComponentType
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -457,7 +457,7 @@ jobs:
           sbomComponentVersion: 1.0.0
 # Error: npm application, optional args -- Error -- missing sbomComponentName
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -470,7 +470,7 @@ jobs:
           sbomComponentVersion: 1.0.0
 # Error: npm application, optional args -- Error -- only namespace provided
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -482,7 +482,7 @@ jobs:
 
 # Error: npm application, optional args -- Error -- only pkgType provided
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -494,7 +494,7 @@ jobs:
 
 # Error: npm application, optional args -- Error -- only namespace and pkgType provided
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -507,7 +507,7 @@ jobs:
    
  # Error: maven application, optional args -- Error, Non-existent manufacturer
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -526,7 +526,7 @@ jobs:
   
  # Error: maven application, optional args -- Error, Non-existent supplier
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -544,7 +544,7 @@ jobs:
           sbomComponentVersion:    1.0.0 
  # Error: maven application, optional args -- Error, empty manufacturer
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -563,7 +563,7 @@ jobs:
   
  # Error: maven application, optional args -- Error, empty supplier
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -581,7 +581,7 @@ jobs:
           sbomComponentVersion:    1.0.0    
 # example4-src -- all empty
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           url:   ''
@@ -593,7 +593,7 @@ jobs:
 #
 # example4-src -- error missing subType other fields empty
       - name: Cybeats SBOM Studio Action
-        uses: RobertHLiu/sbom-studio-action@main
+        uses: MiloshC10/sbom-studio-action@main
         if: always()
         with:
           manufactureName:   Cybeats 
