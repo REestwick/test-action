@@ -1,5 +1,9 @@
 on:
   workflow_dispatch:
+
+parameters:
+  ACTION_NAME: 'cybeats/sbom-studio-action@main'  
+  
 jobs:
   build:
     name: Build
@@ -17,13 +21,12 @@ jobs:
 #      pkgType: maven
 #      sbomComponenentName: Component Name
 #      namespace: com.example.demo
-      ACTION_NAME: cybeats/sbom-studio-action@main
       sbomComponentVersion: 1.0.0
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
       - name: Cybeats SBOM Studio Action
-        uses: ${{ env.ACTION_NAME }}
+        uses: RobertHLiu/sbom-studio-action@main
         with:
           url: https://api.integ.inno.cybeats.com
           filePath: cybeats-sbom-studio-plugin-cyclonedx.json
