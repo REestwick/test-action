@@ -17,7 +17,7 @@ jobs:
 #      pkgType: maven
 #      sbomComponenentName: Component Name
 #      namespace: com.example.demo
-      ACTION_NAME: cybeats/sbom-studio-action@mainn
+      ACTION_NAME: cybeats/sbom-studio-action@main
       sbomComponentVersion: 1.0.0
     steps:
       - name: Checkout Repo
