@@ -29,4 +29,16 @@ jobs:
           filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
           secretAccessKey:   ${{ secrets.SECRETKEY }}  
           accessKey:   ${{ secrets.ACCESSKEY }}  
-          subType:   application                                                               
+          subType:   application  
+      - name: Cybeats SBOM Studio Action
+        uses: MiloshC10/sbom-studio-action@main
+        if: always()
+      - name: Cybeats SBOM Studio Action
+        uses: MiloshC10/sbom-studio-action@main
+        if: always()         
+        with:
+          url:   "https://api.notexist.example.com"  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application                                                                               
