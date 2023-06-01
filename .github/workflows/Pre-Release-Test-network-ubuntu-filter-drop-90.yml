@@ -1,0 +1,65 @@
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+#      url: ${{secrets.APIURL}}
+#      filePath: cybeats-sbom-studio-plugin-cyclonedx.json
+#      secretAccessKey: ${{ secrets.SECRETKEY }}
+#      accessKey: ${{ secrets.ACCESSKEY }}
+#      subType: application
+#      manufactureName: My Manufacturer
+#      supplierName: My Supplier
+#      threshold: Low
+#      sbomQuality: 50
+#      pkgType: maven
+#      sbomComponenentName: Component Name
+#      namespace: com.example.demo
+      sbomComponentVersion: 1.0.0
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Run network emulation container
+        run: |
+          docker build -t my-tc-netem .
+          docker run -d --name network-emulator --net=host  --cap-add=NET_ADMIN my-tc-netem
+          sleep 2  # Give the container some time to start
+
+      - name: Simulate Network Issue
+        run: |
+          # Define the API Gateway domain
+          DOMAIN="api.integ.inno.cybeats.com"
+
+          # Get the IP addresses for the domain
+          IPS=$(dig +short $DOMAIN)
+
+          # Combine all IPs into a single comma-separated string
+          IP_FILTER=$(echo "$IPS" | tr '\n' ',' | sed 's/,$//')
+
+          # Set up IP filtering using iptables to drop traffic for all IPs
+          docker exec network-emulator iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -d $IP_FILTER -m statistic --mode random --probability 0.9 -j DROP
+
+
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        with:
+          url: https://api.integ.inno.cybeats.com
+          filePath: cybeats-sbom-studio-plugin-cyclonedx.json
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType: application
+#          manufactureName: Extreme! Lab, Indiana University
+#          supplierName: Extreme! Lab, Indiana University
+#         threshold: Critical
+          sbomQuality: 50
+          pkgType: maven
+          sbomComponentName: Component Name
+          namespace: com.example.demo
+          sbomComponentVersion: ${{ env.sbomComponentVersion }}
+
+      - name: Clean up
+        run: |
+          docker rm -f network-emulator

@@ -1,0 +1,602 @@
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      WRONG_INTEG_API_URL: 'https://sbom.integ.inno.cybeats.com'
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3  
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application  
+          manufactureName:   Cybeats
+          supplierName:   ''
+          threshold:   High
+          sbomQuality:   High 
+          pkgType:   maven  
+          sbomComponentName:   Example Component Name      
+          namespace:   com.example.demo  
+          sbomComponentVersion:    1.0.0  
+#./spdx-examples/example9/spdx2.2/appbomination.spdx.json
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example9/spdx2.2/appbomination.spdx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application 
+          threshold:   low
+          sbomQuality:   50  
+          pkgType:   maven   
+          sbomComponentName: appbomination 
+          sbomComponentVersion:     8.8.5
+          namespace: example9                             
+
+#./spdx-examples/example9/spdx2.2/appbomination.spdx.json
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example9/spdx2.2/appbomination.spdx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application 
+          threshold:   low
+          sbomQuality:   75  
+          pkgType:   maven   
+          sbomComponentName: appbomination 
+          sbomComponentVersion:     8.8.5
+          namespace: example9                     
+
+#./spdx-examples/example9/spdx2.2/appbomination.spdx.json
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example9/spdx2.2/appbomination.spdx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application 
+          threshold:   low
+          sbomQuality:   100  
+          pkgType:   maven   
+          sbomComponentName: appbomination 
+          sbomComponentVersion:     8.8.5
+          namespace: example9         
+          # maven application, optional args -- sbom quality 100, but expects 101
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application  
+          manufactureName:   Cybeats  
+          supplierName:   Cybeats
+          sbomQuality:   101
+          pkgType:   maven  
+          sbomComponentName:   Example Component Name      
+          namespace:   com.example.demo  
+          sbomComponentVersion:    1.0.0   
+                     # maven application, optional args -- sbom quality 100, but expects -1
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application  
+          manufactureName:   Cybeats  
+          supplierName:   Cybeats
+          sbomQuality:   -1
+          pkgType:   maven  
+          sbomComponentName:   Example Component Name      
+          namespace:   com.example.demo  
+          sbomComponentVersion:    1.0.0   
+           # maven application, optional args -- ?? Threshold is High01 -- see what happen (critical issue present)
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application  
+          manufactureName:   Cybeats  
+          supplierName:   Cybeats
+          threshold:   High01
+          sbomQuality:   50  
+          pkgType:   maven  
+          sbomComponentName:   Example Component Name      
+          namespace:   com.example.demo  
+          sbomComponentVersion:    1.0.0                
+
+# maven application, optional args, non-existent subType
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url: ${{ secrets.APIURL }}
+          filePath:   "cybeats-sbom-studio-plugin-cyclonedx.json"
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   applications_wrong_subtype_not_supported_by_backend_123 
+# maven application, optional args, access key of wrong data type
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:  99.00
+          subType:   application  
+# maven application, optional args, secret key of wrong data type
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey: false
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application  
+# maven application, optional args, url of wrong data type
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url: 'http://api.example.com'
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application
+  
+# maven application, optional args, filePath of wong data type
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url: ${{ secrets.APIURL }}
+          filePath:   undefined
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application                                      
+
+# maven application, optional args, subType of wrong data type
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url: ${{ secrets.APIURL }}
+          filePath:   "cybeats-sbom-studio-plugin-cyclonedx.json"
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   0
+
+# maven application, optional args, subType of bad data type
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url: ${{ secrets.APIURL }}
+          filePath:   "cybeats-sbom-studio-plugin-cyclonedx.json"
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   NaN        
+# maven application, optional args, all input are bad data
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url: true
+          filePath: naN
+          secretAccessKey:  NaN
+          accessKey:  0
+          subType:   undefined                           
+# Error:  maven application, API URL from env not exist
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   "$INTEG_API_URL_WHICH_IS_NOT_DEFINED_DELIBERATELY"  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application   
+# Error:  maven application, API URL WRONG VALUE
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   "${{ env.WRONG_INTEG_API_URL }}"  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application                             
+# Error:  maven application, wrong secret key
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   "A_SECRET_KEY_THAT_DOES_NOT_EXIST_IN_ANY_ENV"
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application       
+# Error: maven application, optional args -- wrong access key
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   "AN ACCESS KEY THAT DOES NOT EXIST AND CONTAIN EMPTY SPACE "
+          subType:   application        
+# Error: maven application, wrong subtype as library
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   library
+        
+# Error: maven application, wrong subtype as package
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   package              
+
+# Error: maven application, wrong filePath (should have .json extension but didn't supply)
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   package       
+# Error: npm application, optional args -- Error missing sbomComponentVersion
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  'examples/application/cybeats-admin-sboms-2.7.1475-cyclonedx-full-license-text.json' 
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType:   'application'  
+          pkgType:   'npm'  
+          sbomComponentName:   'admin-sboms' 
+          namespace:   '@cybeats' 
+# Error: npm application, optional args -- Error -- empty URL
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   '   '
+          filePath:  'examples/application/cybeats-admin-sboms-2.7.1475-cyclonedx-full-license-text.json' 
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType:   'application'  
+          pkgType:   'npm'  
+          sbomComponentName:   'admin-sboms' 
+          namespace:   '@cybeats' 
+          sbomComponentVersion: 1.0.0
+# Error: npm application, optional args -- Error -- empty FilePath
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  '      ' 
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType:   'application'  
+          pkgType:   'npm'  
+          sbomComponentName:   'admin-sboms' 
+          namespace:   '@cybeats' 
+          sbomComponentVersion: 1.0.0
+# Error: npm application, optional args -- Error -- empty secretKey
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  'examples/application/cybeats-admin-sboms-2.7.1475-cyclonedx-full-license-text.json' 
+          secretAccessKey: '    '
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType:   'application'  
+          pkgType:   'npm'  
+          sbomComponentName:   'admin-sboms' 
+          namespace:   '@cybeats' 
+          sbomComponentVersion: 1.0.0
+# Error: npm application, optional args -- Error -- empty accessKey
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  'examples/application/cybeats-admin-sboms-2.7.1475-cyclonedx-full-license-text.json' 
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: '    '
+          subType:   'application'  
+          pkgType:   'npm'  
+          sbomComponentName:   'admin-sboms' 
+          namespace:   '@cybeats' 
+          sbomComponentVersion: 1.0.0
+# Error: npm application, optional args -- Error -- empty subType
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  'examples/application/cybeats-admin-sboms-2.7.1475-cyclonedx-full-license-text.json' 
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType:   '      '  
+          pkgType:   'npm'  
+          sbomComponentName:   'admin-sboms' 
+          namespace:   '@cybeats' 
+          sbomComponentVersion: 1.0.0
+# Error: npm application, optional args -- Error -- empty pkgType
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  'examples/application/cybeats-admin-sboms-2.7.1475-cyclonedx-full-license-text.json' 
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType:   'application'  
+          pkgType:   '    '  
+          sbomComponentName:   'admin-sboms' 
+          namespace:   '@cybeats'    
+          sbomComponentVersion: 1.0.0
+          
+# Error: npm application, optional args -- Error -- empty sbomComponentName
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  'examples/application/cybeats-admin-sboms-2.7.1475-cyclonedx-full-license-text.json' 
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType:   'application'  
+          pkgType:   'npm'  
+          sbomComponentName:   '  ' 
+          namespace:   '@cybeats'    
+          sbomComponentVersion: 1.0.0
+          
+# Error: npm application, optional args -- Error -- empty sbomComponentVersion
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  'examples/application/cybeats-admin-sboms-2.7.1475-cyclonedx-full-license-text.json' 
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType:   'application'  
+          pkgType:   ' '  
+          sbomComponentName:   'admin-sboms' 
+          namespace:   '@cybeats'    
+          sbomComponentVersion: '   ' 
+
+
+# Error: npm application, optional args -- Error -- empty subType
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  'examples/application/cybeats-admin-sboms-2.7.1475-cyclonedx-full-license-text.json' 
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType:   '      '  
+          pkgType:   'npm'  
+          sbomComponentName:   'admin-sboms' 
+          namespace:   '@cybeats' 
+          sbomComponentVersion: 1.0.0
+
+
+# Error: npm application, optional args -- Error -- missing sbomComponentVersion
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  'examples/application/cybeats-admin-sboms-2.7.1475-cyclonedx-full-license-text.json' 
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType:   'application'  
+          pkgType:   'npm'  
+          sbomComponentName:   'admin-sboms' 
+          namespace:   '@cybeats' 
+# Error: npm application, optional args -- Error -- missing sbomComponentType
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  'examples/application/cybeats-admin-sboms-2.7.1475-cyclonedx-full-license-text.json' 
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType:   'application'
+          sbomComponentName:   'admin-sboms' 
+          namespace:   '@cybeats' 
+          sbomComponentVersion: 1.0.0
+# Error: npm application, optional args -- Error -- missing sbomComponentName
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  'examples/application/cybeats-admin-sboms-2.7.1475-cyclonedx-full-license-text.json' 
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType:   'application'  
+          pkgType:   'npm'   
+          namespace:   '@cybeats' 
+          sbomComponentVersion: 1.0.0
+# Error: npm application, optional args -- Error -- only namespace provided
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  'examples/application/cybeats-admin-sboms-2.7.1475-cyclonedx-full-license-text.json' 
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType:   'application'  
+          namespace:   '@cybeats'                                         
+
+# Error: npm application, optional args -- Error -- only pkgType provided
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  'examples/application/cybeats-admin-sboms-2.7.1475-cyclonedx-full-license-text.json' 
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType:   'application'  
+          pkgType:   'npm'   
+
+# Error: npm application, optional args -- Error -- only namespace and pkgType provided
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  'examples/application/cybeats-admin-sboms-2.7.1475-cyclonedx-full-license-text.json' 
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType:   'application'  
+          pkgType:   'npm'   
+          namespace: '@cybeats'
+   
+ # Error: maven application, optional args -- Error, Non-existent manufacturer
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application  
+          manufactureName:   Cybeats_typo  
+          supplierName:   Cybeats
+          threshold:   High
+          sbomQuality:   50  
+          pkgType:   maven  
+          sbomComponentName:   Example Component Name      
+          namespace:   com.example.demo  
+          sbomComponentVersion:    1.0.0 
+  
+ # Error: maven application, optional args -- Error, Non-existent supplier
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application  
+          manufactureName:   Cybeats
+          supplierName:   Cybeats_typo
+          threshold:   High
+          sbomQuality:   '90'  
+          pkgType:   maven  
+          sbomComponentName:   Example Component Name      
+          namespace:   com.example.demo  
+          sbomComponentVersion:    1.0.0 
+ # Error: maven application, optional args -- Error, empty manufacturer
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application  
+          manufactureName:   '     cYbeats007 '  
+          supplierName:   Cybeats
+          threshold:   High
+          sbomQuality:   50  
+          pkgType:   maven  
+          sbomComponentName:   Example Component Name      
+          namespace:   com.example.demo  
+          sbomComponentVersion:    1.0.0 
+  
+ # Error: maven application, optional args -- Error, empty supplier
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:   cybeats-sbom-studio-plugin-cyclonedx.json  
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   application  
+          manufactureName:   Cybeats
+          supplierName:   'cYbeats007'
+          threshold:   High
+          sbomQuality:   50  
+          pkgType:   maven  
+          sbomComponentName:   Example Component Name      
+          namespace:   com.example.demo  
+          sbomComponentVersion:    1.0.0    
+# example4-src -- all empty
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          url:   ''
+          filePath:  ''
+          secretAccessKey:  ''  
+          accessKey:            ''
+          subType:  '' 
+#
+#
+# example4-src -- error missing subType other fields empty
+      - name: Cybeats SBOM Studio Action
+        uses: cybeats/sbom-studio-action@main
+        if: always()
+        with:
+          manufactureName:   Cybeats 
+          supplierName:   Cybeats 
+           
+#
