@@ -48,6 +48,7 @@ jobs:
         uses: cybeats/sbom-studio-action@main
         env:
           HTTPS_PROXY: "${{ vars.PROXY_URL }}"
+        if: always()
         with:
           url: https://api.integ.inno.cybeats.com
           filePath: cybeats-sbom-studio-plugin-cyclonedx.json
@@ -66,6 +67,7 @@ jobs:
 
       - name: Cybeats SBOM Studio Action NO Proxy
         uses: cybeats/sbom-studio-action@main 
+        if: always()
         with:
           url: https://api.integ.inno.cybeats.com
           filePath: cybeats-sbom-studio-plugin-cyclonedx.json
