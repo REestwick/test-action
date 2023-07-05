@@ -60,7 +60,7 @@ jobs:
         env:
           no_proxy: 163.com,api.example.com,api.integ.example.com,abc123.co
         run:
-          echo "A Step with $HTTPS_PROXY
+          echo "A Step with $HTTPS_PROXY"
 
       - name: Cybeats SBOM Studio Action NO Proxy ENV VAR
         uses: MiloshC10/sbom-studio-action@main 
