@@ -50,6 +50,7 @@ jobs:
 
       - name: Cybeats SBOM Studio Action with Proxy
         uses: MiloshC10/sbom-studio-action@main
+        if: always()
         env:
           HTTPS_PROXY: "${{ vars.PROXY_URL }}"
         with:
@@ -70,6 +71,7 @@ jobs:
 
       - name: Cybeats SBOM Studio Action NO_PROXY
         uses: MiloshC10/sbom-studio-action@main
+        if: always()
         env:
           HTTPS_PROXY: "${{ vars.PROXY_URL }}"
           NO_PROXY: 163.com,api.example.com,api.integ.inno.cybeats.com,abc123.co
@@ -91,6 +93,7 @@ jobs:
 
       - name: Cybeats SBOM Studio Action no_proxy
         uses: MiloshC10/sbom-studio-action@main
+        if: always()
         env:
           HTTPS_PROXY: "${{ vars.PROXY_URL }}"
           no_proxy: 163.com,api.example.com,api.integ.inno.cybeats.com,abc123.co
@@ -111,6 +114,7 @@ jobs:
 
       - name: Cybeats SBOM Studio Action NO Proxy ENV VAR
         uses: MiloshC10/sbom-studio-action@main 
+        if: always()
         with:
           url: https://api.integ.inno.cybeats.com
           filePath: cybeats-sbom-studio-plugin-cyclonedx.json
