@@ -54,5 +54,6 @@ jobs:
           sbomComponentName: ${{ matrix.ARTIFACT_NAME }}  
           namespace:  ${{ env.PKG_NAMESPACE }} 
           sbomComponentVersion:  ${{ env.APP_BASE_VER }}.${{ github.run_number }}
+          sbomQuality: 55.5
         env:
           STEPS: ${{ steps.parallel-steps.outputs.steps }}
