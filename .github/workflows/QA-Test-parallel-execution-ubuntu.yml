@@ -50,8 +50,8 @@ jobs:
           secretAccessKey:   ${{ secrets.SECRETKEY }}  
           accessKey:   ${{ secrets.ACCESSKEY }}  
           subType:   application  
-          #pkgType:   ${{ env.PKG_TYPE }}
-          pkgType:   ""
+          pkgType:   ${{ env.PKG_TYPE }}
+          #pkgType:   ""
           sbomComponentName: ${{ matrix.ARTIFACT_NAME }}  
           namespace:  ${{ env.PKG_NAMESPACE }} 
           sbomComponentVersion:  ${{ env.APP_BASE_VER }}.${{ github.run_number }}
