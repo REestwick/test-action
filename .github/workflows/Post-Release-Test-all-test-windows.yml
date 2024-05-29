@@ -6,6 +6,7 @@ jobs:
     runs-on: windows-latest
     env:
       INTEG_API_URL: 'https://api.integ.inno.cybeats.com'
+      ACTION: 'https://github.com/REestwick/sbom-studio-action/tree/main'
 #      filePath: cybeats-sbom-studio-plugin-cyclonedx.json
 #      secretAccessKey: ${{ secrets.SECRETKEY }}
 #      accessKey: ${{ secrets.ACCESSKEY }}
@@ -25,7 +26,7 @@ jobs:
 
 # maven application, API URL from env
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:  ${{ env.INTEG_API_URL }}
@@ -35,7 +36,7 @@ jobs:
           subType:   application     
 # pypi application, required args
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -46,7 +47,7 @@ jobs:
 
  # maven application, optional args -- Pass without threshold
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   "     ${{ secrets.APIURL }}    "
@@ -63,7 +64,7 @@ jobs:
           sbomComponentVersion:  "   ${{ env.APP_BASE_VER }}.${{ github.run_number }}   "
  # maven application, optional args -- fail with Critical threshold (critical vulns present)
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -82,7 +83,7 @@ jobs:
  
 # maven application, optional args -- actual quality 100, expect 100
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -100,7 +101,7 @@ jobs:
   
 # golang application, optional args -- actual quality 90 ,expect 91
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -115,7 +116,7 @@ jobs:
           sbomQuality: 90
 # golang application, optional args -- actual quality 90, expect 90
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -131,7 +132,7 @@ jobs:
 
 # golang application, optional args -- quality meets expectation but vuln threshold doesn't -- has Critical vulns
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -148,7 +149,7 @@ jobs:
 
 # golang application, optional args -- quality and threshold both fail
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -166,7 +167,7 @@ jobs:
 
 # pypi application, required args
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -179,7 +180,7 @@ jobs:
 
 # npm application, optional args
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -196,7 +197,7 @@ jobs:
 
 # npm package, required args
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -207,7 +208,7 @@ jobs:
 
 # pypi package, optinal args
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -221,7 +222,7 @@ jobs:
 
 # golang library, required args plus mn and sn
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -234,7 +235,7 @@ jobs:
 
 # maven library, optional args
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -252,7 +253,7 @@ jobs:
           sbomComponentVersion: 3.8.1
 #
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -262,7 +263,7 @@ jobs:
           subType:   container  
 
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -281,7 +282,7 @@ jobs:
 #
 # example6-bin
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -298,7 +299,7 @@ jobs:
 #
 # example6-src -- 
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -315,7 +316,7 @@ jobs:
 #
 # example6-lib --  shall be allowed error library cannot be golang
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -335,7 +336,7 @@ jobs:
 #
 # example7
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -350,7 +351,7 @@ jobs:
 
 # example7
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -361,7 +362,7 @@ jobs:
           #
 # example7
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -378,7 +379,7 @@ jobs:
           #
 # example7
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -395,7 +396,7 @@ jobs:
           #
 # example7
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -411,7 +412,7 @@ jobs:
           namespace: example7                 
 # example8 ./example8/spdx2.3/examplemaven-0.0.1.spdx.json
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -427,7 +428,7 @@ jobs:
           namespace: example8
 #./spdx-examples/example9/spdx2.2/appbomination.spdx.json
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -443,7 +444,7 @@ jobs:
           namespace: example9
 #./spdx-examples/example9/spdx2.2/appbomination.spdx.json
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -460,7 +461,7 @@ jobs:
 
 #./spdx-examples/example9/spdx2.2/appbomination.spdx.json
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -477,7 +478,7 @@ jobs:
           
 #./spdx-examples/example9/spdx2.2/appbomination.spdx.json
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -493,7 +494,7 @@ jobs:
           namespace: example9
 #./spdx-examples/example9/spdx2.2/appbomination.spdx.json
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -509,7 +510,7 @@ jobs:
           namespace: example9
 #./spdx-examples/example9/spdx2.2/appbomination.spdx.json
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -526,7 +527,7 @@ jobs:
          
 # ./spdx-examples/example10/spdx2.3/hello-source.spdx.json
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -542,7 +543,7 @@ jobs:
           namespace: example10
 #./spdx-examples/example11/spdx2.3/sbom.spdx.json                    
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -559,7 +560,7 @@ jobs:
 # ./spdx-examples/example12/spdx2.2/hello-dist.spdx.json
 # ./spdx-examples/example12/spdx2.2/hello-src.spdx.json
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
@@ -574,7 +575,7 @@ jobs:
           sbomComponentVersion:   12.12.1
           namespace: example12
       - name: Cybeats SBOM Studio Action
-        uses: cybeats/sbom-studio-action@v1
+        uses: ${{ env.ACTION }}
         if: always()
         with:
           url:   ${{ secrets.APIURL }}  
