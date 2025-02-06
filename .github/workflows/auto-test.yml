@@ -26,8 +26,7 @@ jobs:
 # maven application, API URL from env
       - name: Cybeats SBOM Studio Action
         # uses: cybeats/sbom-studio-action@v1
-        # uses: REestwick/sbom-studio-action@reformat
-        uses: https://github.com/REestwick/sbom-studio-action@reformat
+        uses: REestwick/sbom-studio-action@reformat
         if: always()
         with:
           url:  ${{ secrets.APIURL }}
