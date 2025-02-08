@@ -15,7 +15,8 @@ jobs:
         if: always()
         with:
           url:  ${{ secrets.APIURL }}
-          filePath: cybeats-sbom-studio-plugin-cyclonedx.json  
+          # filePath: cybeats-sbom-studio-plugin-cyclonedx.json 
+          filePath: examples/application/sbom-cli-linux-cyclonedx.json
           secretAccessKey:   ${{ secrets.SECRETKEY }}  
           accessKey:   ${{ secrets.ACCESSKEY }}  
           subType:   application 
