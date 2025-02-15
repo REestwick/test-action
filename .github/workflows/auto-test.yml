@@ -21,4 +21,4 @@ jobs:
           accessKey:   ${{ secrets.ACCESSKEY }}  
           subType:   application 
           sbomAutocorrection: true
-          sbomLicenseCorrection: false
+          sbomLicenseCorrection: check
