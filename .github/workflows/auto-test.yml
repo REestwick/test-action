@@ -22,3 +22,19 @@ jobs:
           subType:   application 
           sbomAutocorrection: true
           sbomLicenseCorrection: check
+
+      - name: Cybeats SBOM Studio Action
+        uses: REestwick/sbom-studio-action@fix-typos
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath:  ./spdx-examples/example10/spdx2.3/hello-source.spdx.json 
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:   package 
+          threshold:   Critical  
+          sbomQuality:   100  
+          pkgType:   pypi   
+          sbomComponentName: hello3 
+          sbomComponentVersion:     0.0.1
+          namespace: example10
