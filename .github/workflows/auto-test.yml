@@ -11,7 +11,7 @@ jobs:
 # maven application, API URL from env
       - name: Cybeats SBOM Studio Action
         # uses: cybeats/sbom-studio-action@v1
-        uses: REestwick/sbom-studio-action@autocorrection
+        uses: rnairrajeev/sbom-studio-action@feature/store_output
         if: always()
         with:
           url:  ${{ secrets.APIURL }}
@@ -19,6 +19,13 @@ jobs:
           filePath: examples/application/sbom-cli-linux-cyclonedx.json
           secretAccessKey:   ${{ secrets.SECRETKEY }}  
           accessKey:   ${{ secrets.ACCESSKEY }}  
-          subType:   application 
-          sbomAutocorrection: true
-          sbomLicenseCorrection: check
+          subType:  application 
+          # threshold:  Medium
+          sbomQuality:   75  
+          pkgType: maven   
+          sbomComponentName: sbom-cli-Linux 
+          sbomComponentVersion: 8.8.6
+          # namespace: example9      
+          # manufactureName: Cybeats  
+          # supplierName: Cybeats  
+          analysisReportPath: reports/sbom-analysis.json
