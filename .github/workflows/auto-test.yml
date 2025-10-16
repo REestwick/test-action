@@ -28,4 +28,4 @@ jobs:
           # namespace: example9      
           # manufactureName: Cybeats  
           # supplierName: Cybeats  
-          analysisReportPath: reports/sbom-analysis.json
+          analysisReportPath: ./reports/sbom-analysis.json
