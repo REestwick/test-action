@@ -1,0 +1,39 @@
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+# maven application, API URL from env
+      - name: Cybeats SBOM Studio Action
+        # uses: cybeats/sbom-studio-action@v1
+        uses: rnairrajeev/sbom-studio-action@feature/store_output
+        if: always()
+        with:
+          url:  ${{ secrets.APIURL }}
+          # filePath: cybeats-sbom-studio-plugin-cyclonedx.json 
+          filePath: examples/application/sbom-cli-linux-cyclonedx.json
+          secretAccessKey:   ${{ secrets.SECRETKEY }}  
+          accessKey:   ${{ secrets.ACCESSKEY }}  
+          subType:  application 
+          # threshold:  Medium
+          sbomQuality:   75  
+          pkgType: maven   
+          sbomComponentName: sbom-cli-Linux 
+          sbomComponentVersion: 8.8.6
+          # namespace: example9      
+          # manufactureName: Cybeats  
+          # supplierName: Cybeats  
+          analysisReportPath:  ./report.json
+          threshold: Critical
+
+      - name: Upload SPDX + Cybeats Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-cli-Linux
+          path: ./report.json
+        
