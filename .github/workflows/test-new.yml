@@ -36,4 +36,44 @@ jobs:
         with:
           name: sbom-cli-Linux
           path: ./report.json
+
+
+# pypi application, required args
+      - name: Cybeats SBOM Studio Action
+        uses: rnairrajeev/sbom-studio-action@feature/store_output
+        if: always()
+        with:
+          url:   ${{ secrets.APIURL }}  
+          filePath: ./examples/application/cybeats-test-sbom-cli-3.5.13-cyclonedx.json
+          secretAccessKey: ${{ secrets.SECRETKEY }}
+          accessKey: ${{ secrets.ACCESSKEY }}
+          subType: application
+
+
+
+ # maven application, optional args -- Pass without threshold
+      - name: Cybeats SBOM Studio Action
+        uses: rnairrajeev/sbom-studio-action@feature/store_output
+        if: always()
+        with:
+          url:   "     ${{ secrets.APIURL }}    "
+          filePath:  " cybeats-sbom-studio-plugin-cyclonedx.json   "
+          secretAccessKey: "  ${{ secrets.SECRETKEY }}  " 
+          accessKey: "  ${{ secrets.ACCESSKEY }}  "
+          subType:  "  application  "
+          manufactureName:  "  Cybeats   "
+          supplierName:  " Cybeats       "
+          sbomQuality:   50  
+          pkgType:  " maven   "
+          sbomComponentName: "  Example Component Name        "
+          namespace:  "      com.example.demo  "
+          sbomComponentVersion:  "   ${{ env.APP_BASE_VER }}.${{ github.run_number }}   "
+          analysisReportPath:  ./report.json
+          threshold: Critical
+
+      - name: Upload SPDX + Cybeats Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-cli-Linux
+          path: ./report.json         
         
