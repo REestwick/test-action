@@ -30,8 +30,8 @@ jobs:
           accessKey: ${{ secrets.ACCESSKEY }}
           subType: application
 #          manufactureName: Extreme! Lab, Indiana University
-#          supplierName: Extreme! Lab, Indiana University
-#         threshold: Critical
+#          supplierName: Extreme! Lab, Indiana Universit
+          threshold: Medium
           sbomQuality: 50
           pkgType: maven
           sbomComponentName: Component Name
