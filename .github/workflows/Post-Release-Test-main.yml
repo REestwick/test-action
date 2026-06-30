@@ -32,6 +32,7 @@ jobs:
 #          manufactureName: Extreme! Lab, Indiana University
 #          supplierName: Extreme! Lab, Indiana Universit
           threshold: Medium
+          analysisReportPath: reports/sbom-analysis.json
           sbomQuality: 50
           pkgType: maven
           sbomComponentName: Component Name
