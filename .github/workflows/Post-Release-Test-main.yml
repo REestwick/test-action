@@ -22,7 +22,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v7
       - name: Cybeats SBOM Studio Action
-        uses: REestwick/sbom-studio-action@upgrade-to-24
+        uses: REestwick/sbom-studio-action@vuln-correction
         with:
           url: https://api.integ.inno.cybeats.com
           filePath: cybeats-sbom-studio-plugin-cyclonedx.json
