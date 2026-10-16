@@ -22,22 +22,25 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v7
       - name: Cybeats SBOM Studio Action
-        uses: REestwick/sbom-studio-action@vuln-correction
+        uses: sashe-a/sbom-studio-action@feature/CLOU-3236-support-resourcegroupnames
         with:
           url: https://api.integ.inno.cybeats.com
           filePath: cybeats-sbom-studio-plugin-cyclonedx.json
           secretAccessKey: ${{ secrets.SECRETKEY }}
           accessKey: ${{ secrets.ACCESSKEY }}
           subType: application
+          resourceGroupNames: |
+            Test group
 #          manufactureName: Extreme! Lab, Indiana University
 #          supplierName: Extreme! Lab, Indiana Universit
           #threshold: Medium
           #analysisReportPath: reports/sbom-analysis.json
-          sbomQuality: 50
-          pkgType: maven
-          sbomComponentName: Component Name
-          namespace: com.example.demo
-          sbomComponentVersion: ${{ env.sbomComponentVersion }}
+          # sbomQuality: 50
+          # pkgType: maven
+          # sbomComponentName: Component Name
+          # namespace: com.example.demo
+          # sbomComponentVersion: ${{ env.sbomComponentVersion }}
+          
       # - name: Artifact Upload
       #   uses: actions/upload-artifact@v7
       #   with:
