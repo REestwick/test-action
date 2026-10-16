@@ -30,7 +30,7 @@ jobs:
           accessKey: ${{ secrets.ACCESSKEY }}
           subType: application
           resourceGroupNames: |
-            Test group
+            Test group 
 #          manufactureName: Extreme! Lab, Indiana University
 #          supplierName: Extreme! Lab, Indiana Universit
           #threshold: Medium
