@@ -29,7 +29,7 @@ jobs:
           secretAccessKey: ${{ secrets.SECRETKEY }}
           accessKey: ${{ secrets.ACCESSKEY }}
           subType: application
-          resourceGroupNames:
+          resourceGroupNames: |
             TestGroup-Richard-New
             Test group
 #          manufactureName: Extreme! Lab, Indiana University
